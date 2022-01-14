@@ -9,6 +9,7 @@ import Head from "next/head";
 import { getProviders, signIn } from "next-auth/react";
 
 function Home({ providers }) {
+  // console.log(providers);
   return (
     <div className="space-y-10 relative">
       <Head>
@@ -51,15 +52,15 @@ function Home({ providers }) {
             Welcome to your professional community
           </h1>
           <div className="space-y-4">
-            <div className="intent">
+            <div className="flex justify-between items-center hover:shadow-xl p-4 cursor-pointer rounded-lg text-black bg-white max-w-md mx-auto xl:mx-0">
               <h2 className="text-xl">Search for a job</h2>
               <ArrowForwardIosRoundedIcon className="text-gray-700" />
             </div>
-            <div className="intent">
+            <div className="flex justify-between items-center hover:shadow-xl p-4 cursor-pointer rounded-lg text-black bg-white max-w-md mx-auto xl:mx-0">
               <h2 className="text-xl">Find a person you know</h2>
               <ArrowForwardIosRoundedIcon className="text-gray-700" />
             </div>
-            <div className="intent">
+            <div className="flex justify-between items-center hover:shadow-xl p-4 cursor-pointer rounded-lg text-black bg-white max-w-md mx-auto xl:mx-0">
               <h2 className="text-xl">Learn a new skill</h2>
               <ArrowForwardIosRoundedIcon className="text-gray-700" />
             </div>

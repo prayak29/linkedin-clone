@@ -1,16 +1,23 @@
 import { getProviders, getSession, useSession } from "next-auth/react";
 import Head from "next/head";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import Feed from "../components/Feed";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
-import { useRouter } from "next/router";
+import { AnimatePresence } from "framer-motion";
+import { useRecoilState } from "recoil";
+import { modalState, modalTypeState } from "../atoms/modalAtom";
+import Modal from "../components/Modal";
 
 export default function Home() {
+  const [modalOpen, setModalOpen] = useRecoilState(modalState);
+  const [modalType, setModalType] = useRecoilState(modalTypeState);
   const router = useRouter();
   const { status } = useSession({
     required: true,
     onUnauthenticated() {
-      // the user is not authenticated , handle
+      // The user is not authenticated, handle it here.
       router.push("/home");
     },
   });
@@ -29,15 +36,21 @@ export default function Home() {
           {/*  sidebar  */}
           <Sidebar />
           {/* Feed   */}
+          <Feed />
         </div>
         {/* Widegts   */}
+        <AnimatePresence>
+          {modalOpen && (
+            <Modal handleClose={() => setModalOpen(false)} type={modalType} />
+          )}
+        </AnimatePresence>
       </main>
     </div>
   );
 }
 
 export async function getServerSideProps(context) {
-  //Chcek if the user is authenticated on the server
+  // Check if the user is authenticated on the server...
   const session = await getSession(context);
   if (!session) {
     return {
@@ -47,7 +60,6 @@ export async function getServerSideProps(context) {
       },
     };
   }
-
   return {
     props: {
       session,
