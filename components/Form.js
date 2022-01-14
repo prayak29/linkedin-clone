@@ -8,6 +8,7 @@ function Form() {
   const [input, setInput] = useState("");
   const [photoUrl, setPhotoUrl] = useState("");
   const [modalOpen, setModalOpen] = useRecoilState(modalState);
+  const [handlePost, setHandlePost] = useRecoilState(handlePostState);
 
   const uploadPost = async (e) => {
     e.preventDefault();
@@ -30,6 +31,7 @@ function Form() {
     const responseData = await response.json();
     console.log(responseData);
 
+    setHandlePost(true);
     setModalOpen(false);
   };
   return (

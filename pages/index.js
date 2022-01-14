@@ -9,8 +9,9 @@ import { AnimatePresence } from "framer-motion";
 import { useRecoilState } from "recoil";
 import { modalState, modalTypeState } from "../atoms/modalAtom";
 import Modal from "../components/Modal";
+import { connectToDatabase } from "../util/mongodb";
 
-export default function Home() {
+export default function Home({ posts }) {
   const [modalOpen, setModalOpen] = useRecoilState(modalState);
   const [modalType, setModalType] = useRecoilState(modalTypeState);
   const router = useRouter();
@@ -36,7 +37,7 @@ export default function Home() {
           {/*  sidebar  */}
           <Sidebar />
           {/* Feed   */}
-          <Feed />
+          <Feed posts={posts} />
         </div>
         {/* Widegts   */}
         <AnimatePresence>
@@ -60,9 +61,29 @@ export async function getServerSideProps(context) {
       },
     };
   }
+
+  //GET posts on SSR:
+  const { db } = await connectToDatabase();
+  const posts = await db
+    .collection("posts")
+    .find()
+    .sort({ timestamp: -1 })
+    .toArray();
+
+  //GET Goggle News Api
+
   return {
     props: {
       session,
+      posts: posts.map((post) => ({
+        _id: post._id.toString(),
+        input: post.input,
+        photoUrl: post.photoUrl,
+        username: post.username,
+        email: post.email,
+        userImg: post.userImg,
+        createdAt: post.createdAt,
+      })),
     },
   };
 }
