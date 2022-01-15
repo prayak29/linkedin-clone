@@ -121,7 +121,7 @@ function Post({ post, modalPost }) {
             <h4>Delete post</h4>
           </button>
         ) : (
-          <button className="flex items-center justify-center space-x-2 cursor-pointer hover:bg-black/10 dark:hover:bg-black/20 w-full py-2.5 rounded transition ease-out font-medium">
+          <button className="flex items-center justify-center space-x-2 cursor-pointer hover:bg-black/10 dark:hover:bg-black/20 w-full py-2.5 rounded transition ease-out font-medium ">
             <ReplyRoundedIcon className="-scale-x-100" />
             <h4>Share</h4>
           </button>

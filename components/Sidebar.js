@@ -2,10 +2,11 @@ import { Avatar } from "@mui/material";
 import Image from "next/image";
 import BookmarkOutlinedIcon from "@mui/icons-material/BookmarkOutlined";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
-import { signOut, useSession } from 'next-auth/react';
+import { signOut, useSession } from "next-auth/react";
 
 function Sidebar() {
-    const { data: session } = useSession();
+  const { data: session } = useSession();
+
   return (
     <div className="space-y-2 min-w-max max-w-lg">
       {/* Top */}
@@ -20,15 +21,15 @@ function Sidebar() {
         />
         <div className="mt-5 py-4 space-x-0.5">
           <h4 className="hover:underline decoration-purple-700 underline-offset-1 cursor-pointer">
-          {session?.user?.name}
+            {session?.user?.name}
           </h4>
           <p className="text-black/60 dark:text-white/75 text-sm">
-          {session?.user?.email}
+            {session?.user?.email}
           </p>
         </div>
 
         <div className="hidden md:inline text-left dark:text-white/75 text-sm">
-          <div className="font-medium dark:border-t border-gray-600 py-3 px-4 cursor-pointer opacity-80 hover:opacity-100 space-y-0.5">
+          <div className="font-medium  dark:border-t border-gray-600 py-3 px-4 cursor-pointer opacity-80 hover:opacity-100 space-y-0.5">
             <div className="flex justify-between space-x-2">
               <h4>Who viewed your profile</h4>
               <span className="text-blue-500">321</span>
@@ -39,7 +40,7 @@ function Sidebar() {
             </div>
           </div>
 
-          <div className="dark:border-t border-gray-600 py-3 px-4 cursor-pointer opacity-80 hover:opacity-100">
+          <div className=" dark:border-t border-gray-600 py-3 px-4 cursor-pointer opacity-80 hover:opacity-100">
             <h4 className="leading-4 text-xs">
               Access exclusive tools & insights
             </h4>
@@ -49,7 +50,7 @@ function Sidebar() {
             </h4>
           </div>
 
-          <div className="dark:border-t border-gray-600 py-3 px-4 cursor-pointer opacity-80 hover:opacity-100 flex items-center space-x-1.5">
+          <div className=" dark:border-t border-gray-600 py-3 px-4 cursor-pointer opacity-80 hover:opacity-100 flex items-center space-x-1.5">
             <BookmarkOutlinedIcon className="!-ml-1" />
             <h4 className="dark:text-white font-medium">My items</h4>
           </div>
@@ -57,9 +58,7 @@ function Sidebar() {
       </div>
       {/* Bottom */}
       <div className="hidden md:flex bg-white dark:bg-[#1D2226] text-black/70 dark:text-white/75 rounded-lg overflow-hidden flex-col space-y-2 pt-2.5 sticky top-20 border border-gray-300 dark:border-none">
-        <p className="text-[13px] font-medium text-blue-500 hover:underline cursor-pointer px-2.5">
-          Groups
-        </p>
+        <p className="text-[13px] font-medium text-blue-500 hover:underline cursor-pointer px-2.5">Groups</p>
         <div className="flex items-center justify-between">
           <p className="text-[13px] font-medium text-blue-500 hover:underline cursor-pointer px-2.5">
             Events
@@ -69,7 +68,7 @@ function Sidebar() {
         <p className="text-[13px] font-medium text-blue-500 hover:underline cursor-pointer px-2.5">
           Followed Hashtags
         </p>
-        <div className="dark:border-t border-gray-600 py-3 px-4 cursor-pointer opacity-80 hover:opacity-100 text-center">
+        <div className=" dark:border-t border-gray-600 py-3 px-4 cursor-pointer opacity-80 hover:opacity-100 text-center">
           <h4 className="dark:text-white font-medium text-sm">Discover More</h4>
         </div>
       </div>

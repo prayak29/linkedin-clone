@@ -22,8 +22,10 @@ function Header() {
   const [mounted, setMounted] = useState(false);
   const { setTheme, resolvedTheme, theme } = useTheme();
 
-  //After mounting, we have access to the theme
+  // After mounting, we have access to the theme
   useEffect(() => setMounted(true), []);
+
+  console.log("Current theme is", theme);
 
   return (
     <header className="sticky top-0 z-40 bg-white dark:bg-[#1D2226] flex items-center justify-around py-1.5 px-3 focus-within:shadow-lg">
@@ -59,7 +61,7 @@ function Header() {
         <HeaderLink Icon={Avatar} text="Me" feed avatar hidden />
         <HeaderLink Icon={AppsOutlinedIcon} text="Work" feed hidden />
 
-        {/* Dark mode  */}
+        {/* Dark mode toggle */}
         {mounted && (
           <div
             className={`bg-gray-600 flex items-center px-0.5 rounded-full h-6 w-12 cursor-pointer flex-shrink-0 relative ${

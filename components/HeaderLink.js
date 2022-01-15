@@ -1,7 +1,8 @@
-import { signOut, useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 
 function HeaderLink({ Icon, text, feed, active, avatar, hidden }) {
   const { data: session } = useSession();
+
   return (
     <div
       className={`${
@@ -18,6 +19,7 @@ function HeaderLink({ Icon, text, feed, active, avatar, hidden }) {
       ) : (
         <Icon />
       )}
+
       <h4
         className={`text-sm ${
           feed && "hidden lg:flex justify-center w-full mx-auto"
